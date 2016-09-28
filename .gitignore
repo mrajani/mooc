@@ -1,0 +1,24 @@
+.rake_test_cache
+**/*.pem
+**/*.pub
+**/*.deb
+**/*.rpm
+**/.vagrant/*
+**/.chef/*.*
+**/.bundle/
+**/*_rsa*
+**/*.gz
+**/*.iso
+**/*.log
+
+## From https://github.com/tacahilo/packer-centos-7/blob/master/.gitignore
+packer_cache/
+.box
+.DS_Store
+.AppleDouble
+.LSOverride
+# Icon ends with two \r
+Icon
+._*
+.Spotlight-V100
+.Trashes
