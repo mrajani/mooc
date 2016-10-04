@@ -1,0 +1,57 @@
+---
+provisioners: &provref
+  script_folder: ~/Documents/Git/learnvagrant/shared/
+  shell: &scripts
+    script1: gitinstall.sh
+    script2: gitsetup.sh
+
+nodes:
+  - hostname: puppet.iono.box
+    aliases: puppet puppetmaster.iono.box
+    box: boxcutter/centos72
+    os: centos
+    memory: 2048
+    ip: 192.168.128.49
+    provisioners:
+      <<: *provref
+      shell:
+       <<: *scripts
+       script4: puppetmaster4.sh
+
+  - hostname: agent1.iono.box
+    aliases: agent1.iono.box
+    box: boxcutter/centos72
+    os: centos
+    memory: 512
+    ip: 192.168.128.50
+    provisioners:
+      <<: *provref
+      shell:
+        <<: *scripts
+        script4: puppetclient4.sh
+
+  - hostname: agent2.iono.box
+    aliases: agent2.iono.box
+    box: ubuntu/xenial64
+    os: ubuntu
+    release: xenial
+    memory: 512
+    ip: 192.168.128.51
+    provisioners:
+      <<: *provref
+      shell:
+        <<: *scripts
+        script4: puppetclient4.sh
+
+  - hostname: agent3.iono.box
+    aliases: agent3.iono.box
+    box: ubuntu/trusty64
+    os: ubuntu
+    release: trusty
+    memory: 512
+    ip: 192.168.128.52
+    provisioners:
+      <<: *provref
+      shell:
+        <<: *scripts
+        script4: puppetclient4.sh
