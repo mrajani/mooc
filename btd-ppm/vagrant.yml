@@ -8,7 +8,7 @@ provisioners: &provref
 nodes:
   - hostname: puppet.iono.box
     aliases: puppet puppetmaster.iono.box
-    box: boxcutter/centos72
+    box: bento/centos-7.5
     os: centos
     memory: 2048
     ip: 192.168.128.49
@@ -16,19 +16,19 @@ nodes:
       <<: *provref
       shell:
        <<: *scripts
-       script4: puppetmaster4.sh
+       script4: puppetmaster5.sh
 
   - hostname: agent1.iono.box
     aliases: agent1.iono.box
-    box: boxcutter/centos72
+    box: bento/centos-7.5
     os: centos
-    memory: 512
+    memory: 1024
     ip: 192.168.128.50
     provisioners:
       <<: *provref
       shell:
         <<: *scripts
-        script4: puppetclient4.sh
+        script4: puppetclient5.sh
 
   - hostname: agent2.iono.box
     aliases: agent2.iono.box
